@@ -11,8 +11,7 @@ public class GameManager {
              */
 
         } else {
-            new Tamagotchi()
-      
+           
         }
     } 
 

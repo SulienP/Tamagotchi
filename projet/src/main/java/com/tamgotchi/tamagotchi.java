@@ -1,6 +1,5 @@
 package com.tamgotchi;
-import java.io.InputStreamReader;
-import java.io.BufferedReader; 
+
 public class Tamagotchi {
     String name = "";
     int age = 0;
@@ -11,15 +10,10 @@ public class Tamagotchi {
     int state = 0;
     boolean isAlive = true;
     int tiredness = 20;
-    boolean sick = false
-    public askeName(){
-    System.out.println("Quel sera son nom?");
-        InputStreamReader reader = new InputStreamReader(System.in);
-        BufferedReader buffer = new BufferedReader(reader);
-    tamagotchi(buffer)
-    }
+    boolean sick = false;
+
      
-    tamagotchi(String name){
+    void tamagotchi(String name){
         this.name=name;
     }
     
