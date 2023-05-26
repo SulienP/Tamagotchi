@@ -37,6 +37,8 @@ public class Tamagotchi {
             }
         }
         tamagotchi(input);
+        Clear clear = new Clear();
+        clear.clearConsole();
     }
      
     void tamagotchi(String name) {
@@ -47,7 +49,6 @@ public class Tamagotchi {
     public void toilet(){
         //lanch little game who return value between 1 to 100
         this.care+=30; //complit with value return by game
-       
     }
 
     public void feed(){
