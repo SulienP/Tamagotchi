@@ -13,9 +13,7 @@ public class GameManager {
 
         } else {
             Tamagotchi nameTamagotchi = new Tamagotchi();
-                nameTamagotchi.askeName();
- 
-
+            nameTamagotchi.askeName();
             Menu menu = new Menu();
             menu.MenuPlay();
             
