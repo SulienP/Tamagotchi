@@ -37,6 +37,7 @@ public class Tamagotchi {
             }
         }
         tamagotchi(input);
+        Clear.clearConsole();
     }
      
     void tamagotchi(String name) {
