@@ -11,9 +11,8 @@ public class GameManager {
              */
 
         } else {
-            /*
-             *TODO Lancement du jeu
-             */
+            new Tamagotchi()
+      
         }
     } 
 

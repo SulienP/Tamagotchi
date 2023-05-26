@@ -43,10 +43,6 @@ public class Menu {
                 case "5":
                     return "heal";
                 case "6":
-                    return "info";
-                case "7":
-                    return "save";
-                case "8":
                     return "quit";
                 default:
                     return "error";
