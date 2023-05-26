@@ -4,6 +4,7 @@ import java.nio.file.*;
 
 public class GameManager {
     public void gamemanager() {
+
         Path path = Path.of("./SaveTamagotchi.jav");
         if (Files.exists(path)) {
             /*
@@ -11,7 +12,8 @@ public class GameManager {
              */
 
         } else {
-           
+            Menu menu = new Menu();
+            menu.MenuPlay();
         }
     } 
 

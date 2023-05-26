@@ -21,7 +21,7 @@ public class Menu {
     };
 
 
-    public static String MenuPlay() {
+    public String MenuPlay() {
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(reader);
         System.out.println("Que voulez-vous faire ?");
