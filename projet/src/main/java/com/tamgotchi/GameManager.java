@@ -3,7 +3,7 @@ package com.tamgotchi;
 import java.nio.file.*;
 
 public class GameManager {
-    public void gamemanager() {
+    public void gamemanager()  {
 
         Path path = Path.of("./SaveTamagotchi.jav");
         if (Files.exists(path)) {
@@ -12,8 +12,13 @@ public class GameManager {
              */
 
         } else {
+            Tamagotchi nameTamagotchi = new Tamagotchi();
+                nameTamagotchi.askeName();
+ 
+
             Menu menu = new Menu();
             menu.MenuPlay();
+            
         }
     } 
 
