@@ -1,5 +1,7 @@
 package com.tamgotchi;
 
+import main.java.com.tamgotchi.TimeStamp;
+
 /**
  * Hello world!
  *

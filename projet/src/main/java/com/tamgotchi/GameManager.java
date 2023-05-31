@@ -1,9 +1,11 @@
 package com.tamgotchi;
 
 import java.nio.file.*;
+import java.security.Timestamp;
 
 public class GameManager {
     private Tamagotchi nameTamagotchi;
+    private Integer time;
 
     public void gamemanager()  {
 
