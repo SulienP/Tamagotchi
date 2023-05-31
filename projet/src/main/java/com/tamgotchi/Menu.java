@@ -10,9 +10,8 @@ public class Menu {
         "3. Dormir",
         "4. Se laver",
         "5. Se soigner",
-        "6. Afficher les informations",
-        "7. Sauvegarder",
-        "8. Quitter"
+        "6. Sauvegarder",
+        "7. Quitter"
     };
     private static final String[] TAMAGOTCHI_MENU_DEAD = {
         "1. Afficher les informations",
@@ -43,6 +42,8 @@ public class Menu {
                 case "5":
                     return "heal";
                 case "6":
+                    return "save";
+                case "7":
                     return "quit";
                 default:
                     return "error";

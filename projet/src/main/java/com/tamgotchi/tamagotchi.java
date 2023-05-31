@@ -3,9 +3,10 @@ package com.tamgotchi;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 
-public class Tamagotchi {
-    static String name = "";
+public class Tamagotchi implements Serializable {
+    String name = "";
     int age = 0;
     int food = 30;
     int health = 50;
@@ -59,4 +60,5 @@ public class Tamagotchi {
     public void cure(){ //add exception if tamagotchi isn't old
         this.sick=false;
     }
+    
 }
