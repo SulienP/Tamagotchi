@@ -39,17 +39,18 @@ public class GameManager {
             } else if ("save".equals(value)) {
                 saveTamagotchi(tamagotchiLoad);
                 System.out.println("You tamagotchi is save, Good bye");
-            }else if("quit".equals(value)) {
+            } else if ("quit".equals(value)) {
                 saveTamagotchi(tamagotchiLoad);
                 System.out.println("Good bye");
-        } else {
-            System.out.println("Bienvenue dans tamagotchi");
-            Tamagotchi tamagotchi = new Tamagotchi();
-            tamagotchi.askeName();
-            saveTamagotchi(tamagotchi);
-            gamemanager();
+            } else {
+                System.out.println("Bienvenue dans tamagotchi");
+                Tamagotchi tamagotchi = new Tamagotchi();
+                tamagotchi.askeName();
+                saveTamagotchi(tamagotchi);
+                gamemanager();
+            }
         }
-    } 
+    }
 
 
     public void saveTamagotchi(Tamagotchi tamagotchi){
