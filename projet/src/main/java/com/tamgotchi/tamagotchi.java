@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Tamagotchi {
-    String name = "";
+    static String name = "";
     int age = 0;
     int food = 30;
     int health = 50;
@@ -37,8 +37,7 @@ public class Tamagotchi {
             }
         }
         tamagotchi(input);
-        Clear clear = new Clear();
-        clear.clearConsole();
+        Clear.clearConsole();
     }
      
     void tamagotchi(String name) {
@@ -49,6 +48,7 @@ public class Tamagotchi {
     public void toilet(){
         //lanch little game who return value between 1 to 100
         this.care+=30; //complit with value return by game
+        
     }
 
     public void feed(){

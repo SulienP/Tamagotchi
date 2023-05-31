@@ -16,7 +16,7 @@ public class ExceptionTamagotchi extends Exception{
     public String getMessage() {
         switch(execptionType) {
             case NoName:
-                return "Merci de mrentrer un nom";
+                return "Merci de rentrer un nom";
             default:
                 return "Erreur inconnue";
         }
