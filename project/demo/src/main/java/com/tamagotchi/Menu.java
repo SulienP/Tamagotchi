@@ -5,27 +5,26 @@ import java.io.BufferedReader;
 public class Menu {
 
     private static final String[] TAMAGOTCHI_MENU = {
-        "1. Nourrir",
-        "2. Jouer",
-        "3. Dormir",
-        "4. Se laver",
-        "5. Se soigner",
-        "6. Afficher les informations",
-        "7. Sauvegarder",
-        "8. Quitter"
+            "1. Nourrir",
+            "2. Jouer",
+            "3. Dormir",
+            "4. Se laver",
+            "5. Se soigner",
+            "6. Afficher les informations",
+            "7. Sauvegarder",
+            "8. Quitter"
     };
     private static final String[] TAMAGOTCHI_MENU_DEAD = {
-        "1. Afficher les informations",
-        "2. Sauvegarder",
-        "3. Quitter"
+            "1. Afficher les informations",
+            "2. Sauvegarder",
+            "3. Quitter"
     };
 
-
-    public String MenuPlay() {
+    public static String MenuPlay() {
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(reader);
         System.out.println("Que voulez-vous faire ?");
-        
+
         for (String string : TAMAGOTCHI_MENU) {
             System.out.println(string);
         }
@@ -56,7 +55,7 @@ public class Menu {
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(reader);
         System.out.println("Que voulez-vous faire ?");
-        
+
         for (String string : TAMAGOTCHI_MENU_DEAD) {
             System.out.println(string);
         }
@@ -76,5 +75,5 @@ public class Menu {
             return "error";
         }
     }
-    
+
 }
