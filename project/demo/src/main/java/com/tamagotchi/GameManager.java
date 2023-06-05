@@ -13,7 +13,6 @@ public class GameManager {
 
         if (Files.exists(path)) {
             Tamagotchi tamagotchi = loadTamagotchi();
-
         } else {
             Tamagotchi tamagotchi = new Tamagotchi();
             tamagotchi.askeName();
@@ -37,12 +36,13 @@ public class GameManager {
                 tamagotchi.sleeping();
                 System.out.println("bonne nuit");
             } else if ("quit".equals(value)) {
+                SaveTamagotchi(tamagotchi);
                 System.out.println("good Bye");
             }
         }
     }
 
-    public void SaveTamagotchi(Tamagotchi tamagotchi) {
+    public static void SaveTamagotchi(Tamagotchi tamagotchi) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
