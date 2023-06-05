@@ -1,4 +1,4 @@
-package com.tamgotchi;
+package com.tamagotchi;
 
 public class Clear {
     public static void clearConsole() {
