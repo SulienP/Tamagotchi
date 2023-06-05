@@ -1,4 +1,4 @@
-package com.tamgotchi;
+package com.tamagotchi;
 
 enum TamagotchiExecptionType {
     NoName

@@ -1,4 +1,4 @@
-package com.tamgotchi;
+package com.tamagotchi;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
@@ -21,7 +21,7 @@ public class Menu {
     };
 
 
-    public static String MenuPlay() {
+    public String MenuPlay() {
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(reader);
         System.out.println("Que voulez-vous faire ?");
