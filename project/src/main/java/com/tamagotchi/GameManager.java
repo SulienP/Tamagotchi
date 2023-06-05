@@ -1,4 +1,4 @@
-package com.tamgotchi;
+package com.tamagotchi;
 
 import java.nio.file.*;
 
