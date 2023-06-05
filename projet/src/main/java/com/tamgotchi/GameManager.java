@@ -14,8 +14,8 @@ import java.nio.file.*;
 public class GameManager {
     public void gamemanager() {
         Path path = Path.of("./tamagotchi.dat");
-        System.out.println(path);
-        System.out.println(Files.exists(path));
+        // System.out.println(path);
+        // System.out.println(Files.exists(path));
         if (Files.exists(path)) {
             Clear.clearConsole();
             Tamagotchi tamagotchiLoad = loadTamagotchi();
@@ -42,14 +42,15 @@ public class GameManager {
             } else if ("quit".equals(value)) {
                 saveTamagotchi(tamagotchiLoad);
                 System.out.println("Good bye");
-            } else {
+            }
+        } else {
                 System.out.println("Bienvenue dans tamagotchi");
                 Tamagotchi tamagotchi = new Tamagotchi();
                 tamagotchi.askeName();
                 saveTamagotchi(tamagotchi);
                 gamemanager();
             }
-        }
+        
     }
 
 
