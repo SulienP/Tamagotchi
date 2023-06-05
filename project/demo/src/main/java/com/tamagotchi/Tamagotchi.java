@@ -1,4 +1,4 @@
-package com.tamgotchi;
+package com.tamagotchi;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,23 +40,26 @@ public class Tamagotchi {
         Clear clear = new Clear();
         clear.clearConsole();
     }
-     
+    void sleeping(){}
     void tamagotchi(String name) {
         System.out.println(name);
-        this.name=name;
-    }
-    
-    public void toilet(){
-        //lanch little game who return value between 1 to 100
-        this.care+=30; //complit with value return by game
+        this.name = name;
     }
 
-    public void feed(){
-        //lanch little game who return value between 1 to 100
-        this.food+= 30; //complit with value return by game
+    public void toilet() {
+        // lanch little game who return value between 1 to 100
+        this.care += 30; // complit with value return by game
     }
 
-    public void cure(){ //add exception if tamagotchi isn't old
-        this.sick=false;
+    public void play() {
+        this.happyness += 20;
+    }
+    public void feed() {
+        // lanch little game who return value between 1 to 100
+        this.food += 30; // complit with value return by game
+    }
+
+    public void cure() { // add exception if tamagotchi isn't old
+        this.sick = false;
     }
 }

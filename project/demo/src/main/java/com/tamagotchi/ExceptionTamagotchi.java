@@ -1,9 +1,10 @@
-package com.tamgotchi;
+package com.tamagotchi;
 
 enum TamagotchiExecptionType {
     NoName
 }
-public class ExceptionTamagotchi extends Exception{
+
+public class ExceptionTamagotchi extends Exception {
     TamagotchiExecptionType execptionType = TamagotchiExecptionType.NoName;
     String cause = "";
 
@@ -14,7 +15,7 @@ public class ExceptionTamagotchi extends Exception{
     }
 
     public String getMessage() {
-        switch(execptionType) {
+        switch (execptionType) {
             case NoName:
                 return "Merci de mrentrer un nom";
             default:
