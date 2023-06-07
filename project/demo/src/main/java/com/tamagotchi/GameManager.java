@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.*;
-import java.security.Timestamp;
 
 public class GameManager {
     private static Tamagotchi tamagotchi;
@@ -67,6 +66,10 @@ public class GameManager {
                 Tamagotchi tamagotchi = (Tamagotchi) ois.readObject();
                 bais.close();
                 ois.close();
+                Integer cycles = TimeStamp.GetNumberOfCycle(tamagotchi);
+                for(int i = 0; i<cycles; i++){
+                    tamagotchi.nextcycle();
+                }
                 return tamagotchi;
             }
         }

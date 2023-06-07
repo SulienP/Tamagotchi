@@ -15,6 +15,8 @@ public class Tamagotchi {
     boolean isAlive = true;
     int tiredness = 20;
     boolean sick = false;
+    Integer cycle = 1;
+    Integer lastTimetamp = 0;
 
     void askeName() {
         System.out.println("Qu'elle sera son nom?");
@@ -33,7 +35,6 @@ public class Tamagotchi {
             } catch (ExceptionTamagotchi e) {
                 System.out.println(e.getMessage());
                 askeName();
-
             }
         }
         tamagotchi(input);
@@ -45,7 +46,9 @@ public class Tamagotchi {
         System.out.println(name);
         this.name = name;
     }
-
+    public void nextcycle(){
+        
+    }
     public void toilet() {
         // lanch little game who return value between 1 to 100
         this.care += 30; // complit with value return by game
