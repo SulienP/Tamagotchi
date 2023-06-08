@@ -1,6 +1,7 @@
 package com.tamagotchi;
 
 import java.io.InputStreamReader;
+import java.util.Objects;
 import java.io.BufferedReader;
 
 public class Menu {
@@ -20,15 +21,26 @@ public class Menu {
     };
 
     public static String MenuPlay() {
+        String [] goodValyue = { "1", "2", "3", "4", "5", "6" };
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(reader);
         System.out.println("Que voulez-vous faire ?");
-
         for (String string : TAMAGOTCHI_MENU) {
             System.out.println(string);
         }
         try {
             String input = buffer.readLine();
+            boolean inputchecking = checkValue(goodValyue, input);
+            if (!inputchecking) {
+                try {
+                    throw new ExceptionTamagotchi(TamagotchiExecptionType.BadValue, "BadValue");
+                } catch (ExceptionTamagotchi e) {
+                    System.out.println(e.getMessage());
+                    GameManager gameManager = new GameManager();
+                    gameManager.gamemanager();
+                }
+            }
+            
             switch (input) {
                 case "1":
                     return "feed";
@@ -50,6 +62,14 @@ public class Menu {
         }
     }
 
+    public static boolean checkValue(String[] goodValue, String input) {
+        for (String element : goodValue) {
+            if (Objects.equals(element, input)) {
+                return true;
+            }
+        }
+        return false;
+    }
     public static String MenuPlayDead() {
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(reader);

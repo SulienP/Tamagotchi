@@ -1,39 +1,41 @@
 package com.tamagotchi;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Tamagotchi implements Serializable {
+    int lesFood = 5;
     String name = "";
-    int food = 30;
     int health = 50;
-    int happyness = 0;
+    int happyness = 15;
     int care = 30;
     int state = 0;
     boolean isAlive = true;
     int tiredness = 20;
     boolean isSisck = false;
-    int cycle = 1;
-    int lastTimetamp = 0;
-    int playByCycle = 0;
-    int washByCycle = 0;
-    int feedByCycle = 0;
+
+
+    public void checkTimerforTamagotchi() {
+        System.out.println("10 s ont passer ");
+    }
 
     public boolean checkCondition() {
         if (this.state == 0) {
             System.out.println("votre tamagotchi va naitre");
             return false;
         } else {
+            Clear.clearConsole();
             this.state = 1;
             System.out.println("votre tamagotchi est né");
             SaveTamagotchi(this);
-
             return true;
         }
     }
@@ -61,9 +63,6 @@ public class Tamagotchi implements Serializable {
         Clear.clearConsole();
     }
 
-    void sleeping() {
-        happyness += 10;
-    }
     void tamagotchi(String name) {
         System.out.println(name);
         this.name = name;
@@ -75,11 +74,12 @@ public class Tamagotchi implements Serializable {
     }
 
     public void play() {
-        this.happyness += 20;
+        this.happyness += 3;
+
     }
     public void feed() {
         // lanch little game who return value between 1 to 100
-        this.food += 30; // complit with value return by game
+        this.happyness += 5; // complit with value return by game
     }
 
     public void cure() { // add exception if tamagotchi isn't old
@@ -108,22 +108,46 @@ public class Tamagotchi implements Serializable {
     public void information() {
         String stateValue = "";
         System.out.println("name:" + this.name);
-        System.out.println("feed:" + this.food);
         System.out.println("health:" + this.health);
         System.out.println("happyness:" + this.happyness);
         System.out.println("care:" + this.care);
         if (this.state == 0) {
             stateValue = "baby";
-        }else if(this.state == 1) {
-            stateValue = "young";
-        } else if (this.state == 2) {
+        } else if (this.state == 1) {
             stateValue = "adult";
+        } else if (this.state == 2) {
+            stateValue = "old";
         } else if (this.state == 3) {
             stateValue = "dead";
         }
-        System.out.println("State:" + this.state);
-        System.out.println("tiredness:" + this.tiredness);
-        System.out.println("isSisck:" + this.isSisck);
+        System.out.println("State:" + stateValue);
+     
+ 
+     
+    }
+    
+    public static Tamagotchi loadTamagotchi() {
+        try {
+            Path filePath = Path.of("./tamagotchi.dat");
+            if (Files.exists(filePath)) {
+                byte[] data = Files.readAllBytes(filePath);
+                ByteArrayInputStream bais = new ByteArrayInputStream(data);
+                ObjectInputStream ois = new ObjectInputStream(bais);
+                Tamagotchi tamagotchi = (Tamagotchi) ois.readObject();
+                bais.close();
+                ois.close();
+                TimeStamp.timeStamp(tamagotchi);
 
+                return tamagotchi;
+            }
+        } catch (ClassNotFoundException e) {
+            System.err.println("Un problème de compatibilité de la sauvegarde s'est présenté.");
+        } catch (IOException e) {
+            System.err.println("Quelque chose s'est mal passé durant le chargement du tamagotchi : " + e.getMessage());
+        }
+        Tamagotchi tamagotchi = new Tamagotchi();
+        TimeStamp.timeStamp(tamagotchi);
+
+        return new Tamagotchi();
     }
 }
