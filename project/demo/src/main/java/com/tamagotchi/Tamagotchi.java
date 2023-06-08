@@ -9,7 +9,7 @@ public class Tamagotchi {
     int age = 0;
     int food = 30;
     int health = 50;
-    int happyness = 30;
+    int happyness = 0;
     int care = 30;
     int state = 0;
     boolean isAlive = true;
@@ -17,6 +17,9 @@ public class Tamagotchi {
     boolean sick = false;
     Integer cycle = 1;
     Integer lastTimetamp = 0;
+    Integer playByCycle = 0;
+    Integer washByCycle = 0;
+    Integer feedByCycle = 0;
 
     void askeName() {
         System.out.println("Qu'elle sera son nom?");
@@ -38,16 +41,18 @@ public class Tamagotchi {
             }
         }
         tamagotchi(input);
-        Clear clear = new Clear();
-        clear.clearConsole();
+        Clear.clearConsole();
     }
-    void sleeping(){}
+
+    void sleeping() {
+        happyness += 10;
+    }
     void tamagotchi(String name) {
         System.out.println(name);
         this.name = name;
     }
     public void nextcycle(){
-        
+  
     }
     public void toilet() {
         // lanch little game who return value between 1 to 100
