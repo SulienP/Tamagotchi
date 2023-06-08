@@ -29,7 +29,9 @@ public class App extends Application {
         if ("1".equals(starting)) {
             launch();
         } else {
-            GameManager.gamemanager();
+            GameManager gameManager = new GameManager();
+
+            gameManager.gamemanager();
         }
     }
 

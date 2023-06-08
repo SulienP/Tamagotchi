@@ -9,68 +9,45 @@ import java.nio.file.*;
 
 
 public class GameManager {
-    private static Tamagotchi tamagotchi;
-
-    public static void gamemanager() {
-        Path path = Path.of("./SaveTamagotchi.jav");
+    public static Tamagotchi tamagotchi;
+    public  void gamemanager() {
+        Path path = Path.of("./tamagotchi.dat");
         if (Files.exists(path)) {
             tamagotchi = loadTamagotchi();
-             String value = Menu.MenuPlay();
-                if ("feed".equals(value)) {
-                    tamagotchi.feed();
-                    System.out.println("Vous avez nourri votre Tamagotchi");
-                } else if ("wash".equals(value)) {
-                    tamagotchi.toilet();
-                    System.out.println("Vous avez lavé votre Tamagotchi");
-                    gamemanager();
 
-                } else if ("heal".equals(value)) {
-                    tamagotchi.cure();
-                    System.out.println("Vous avez soigné votre Tamagotchi");
-                    gamemanager();
-                }
         } else {
             tamagotchi = new Tamagotchi();
             tamagotchi.askeName();
             System.out.println("Bienvenue dans Tamagotchi");
-            if (tamagotchi.state != 0) {
+            TimeStamp.timeStamp(tamagotchi);
+        }
+
+        if (tamagotchi.state != 0) {
+            while (tamagotchi.state != 3) {
                 String value = Menu.MenuPlay();
                 if ("feed".equals(value)) {
                     tamagotchi.feed();
                     System.out.println("Vous avez nourri votre Tamagotchi");
-                    gamemanager();
                 } else if ("wash".equals(value)) {
                     tamagotchi.toilet();
                     System.out.println("Vous avez lavé votre Tamagotchi");
-                    gamemanager();
                 } else if ("heal".equals(value)) {
                     tamagotchi.cure();
                     System.out.println("Vous avez soigné votre Tamagotchi");
-                    gamemanager();
+                } else if ("play".equals(value)) {
+                    tamagotchi.play();
+                    System.out.println("Vous avez joué avec votre Tamagotchi");
+                }else if ("info".equals(value)) {
+                    tamagotchi.information();
+                } else  {
+
+                    break; // Sortie de la boucle si aucune option valide n'est sélectionnée
                 }
-            } else {
-                
             }
         }
     }
 
-    public void test(String test) {
-        System.out.println(test);
-    }
 
-    public void SaveTamagotchi() {
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(tamagotchi);
-            byte[] data = baos.toByteArray();
-            Files.write(Path.of("./tamagotchi.dat"), data);
-            oos.close();
-            baos.close();
-        } catch (IOException e) {
-            System.err.println("Quelque chose s'est mal passé durant la sauvegarde : " + e.getMessage());
-        }
-    }
 
     public static Tamagotchi loadTamagotchi() {
         try {
