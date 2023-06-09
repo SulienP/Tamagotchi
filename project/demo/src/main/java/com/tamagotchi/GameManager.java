@@ -1,12 +1,11 @@
 package com.tamagotchi;
 
-
 import java.nio.file.*;
 
 
 public class GameManager {
     public static Tamagotchi tamagotchi;
-    public  void gamemanager() {
+    public static  void gamemanager() {
         Path path = Path.of("./tamagotchi.dat");
         if (Files.exists(path)) {
             tamagotchi = tamagotchi.loadTamagotchi();
@@ -14,39 +13,52 @@ public class GameManager {
             tamagotchi = new Tamagotchi();
             tamagotchi.askeName();
             System.out.println("Bienvenue dans Tamagotchi");
-            TimeStamp.timeStamp(tamagotchi);
+            tamagotchi.state = 1;
+            tamagotchi.SaveTamagotchi(tamagotchi);
+            
         }
         if (tamagotchi.state != 0) {
-            System.out.println("je passe au gamemana");
-                String value = Menu.MenuPlay();
-               if ("wash".equals(value)) {
-                    tamagotchi.toilet();
-                    System.out.println("Vous avez lavé votre Tamagotchi");
-                    gamemanager();
-                } else if ("heal".equals(value)) {
-                    tamagotchi.cure();
-                    System.out.println("Vous avez soigné votre Tamagotchi");
-                    gamemanager();
+            System.out.println("je passe au gamemana" +tamagotchi.state); 
+            String value = Menu.MenuPlay();
+            if ("wash".equals(value)) {
+                tamagotchi.toilet();
+                System.out.println("Vous avez lavé votre Tamagotchi");
+                tamagotchi.checkTimerforTamagotchi("wash");
+               
+            } else if ("heal".equals(value)) {
+                tamagotchi.cure();
+                System.out.println("Vous avez soigné votre Tamagotchi");
+                tamagotchi.checkTimerforTamagotchi("heal");
+               
+                
+            } else if ("feed".equals(value)) {
+                tamagotchi.feed();
+                System.out.println("Vous avez soigné votre Tamagotchi");
+                tamagotchi.checkTimerforTamagotchi("feed");
+                
+               
+                
+            } else if ("play".equals(value)) {
+                tamagotchi.play();
+                
+                                tamagotchi.checkTimerforTamagotchi("play");
 
-                } else if ("feed".equals(value)) {
-                    tamagotchi.feed();
-                    System.out.println("Vous avez soigné votre Tamagotchi");
-                    gamemanager();
-
-                } else if ("play".equals(value)) {
-                    tamagotchi.play();
-                    gamemanager();
-                    System.out.println("Vous avez joué avec votre Tamagotchi");
-                }else if ("info".equals(value)) {
-                    tamagotchi.information();
-                    gamemanager();
-                } else if ("exit".equals(value)) {
-                    System.out.println("GoodBye");
-                    tamagotchi.SaveTamagotchi(tamagotchi);
-                }
+                System.out.println("Vous avez joué avec votre Tamagotchi");
+               
+                
+            } else if ("info".equals(value)) {
+                tamagotchi.information();
+                
+               
+                
+            } else if ("exit".equals(value)) {
+                System.out.println("GoodBye");
+                tamagotchi.SaveTamagotchi(tamagotchi);
             }
         }
-    }
+       
+    }   
+}
 
 
 
@@ -55,4 +67,3 @@ public class GameManager {
 
 
 
-    

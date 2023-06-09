@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 
 public class Tamagotchi implements Serializable {
     int lesFood = 5;
@@ -21,25 +22,20 @@ public class Tamagotchi implements Serializable {
     boolean isAlive = true;
     int tiredness = 20;
     boolean isSisck = false;
+    long lastTime;
+    long lastTimePlay ;
+    long lastTimeFeed ;
+    long lastTimeHelath;
+    long daytime = 30;
+    long currentTime ;
 
-
-    public void checkTimerforTamagotchi() {
-        System.out.println("10 s ont passer ");
+    public void checkTimerforTamagotchi(String action) {
+        LocalDateTime now = LocalDateTime.now();
+        long seconds = now.toEpochSecond(java.time.ZoneOffset.UTC);
+        System.out.println();
+        
     }
 
-    public boolean checkCondition() {
-        if (this.state == 0) {
-            System.out.println("votre tamagotchi va naitre");
-            return false;
-        } else {
-            Clear.clearConsole();
-            this.state = 1;
-            System.out.println("votre tamagotchi est né");
-            SaveTamagotchi(this);
-            return true;
-        }
-    }
-    
     public void askeName() {
         System.out.println("Qu'elle sera son nom?");
         InputStreamReader reader = new InputStreamReader(System.in);
@@ -87,6 +83,10 @@ public class Tamagotchi implements Serializable {
     }
     
     void SaveTamagotchi(Tamagotchi tamagotchi) {
+        LocalDateTime now = LocalDateTime.now();
+        long seconds = now.toEpochSecond(java.time.ZoneOffset.UTC);
+        this.lastTime = seconds;
+        System.out.println("lastime defin");
         Path path = Path.of("./tamagotchi.dat");
         if (!Files.exists(path)) {
             this.state = 1;
@@ -136,7 +136,6 @@ public class Tamagotchi implements Serializable {
                 Tamagotchi tamagotchi = (Tamagotchi) ois.readObject();
                 bais.close();
                 ois.close();
-                TimeStamp.timeStamp(tamagotchi);
 
                 return tamagotchi;
             }
@@ -145,8 +144,6 @@ public class Tamagotchi implements Serializable {
         } catch (IOException e) {
             System.err.println("Quelque chose s'est mal passé durant le chargement du tamagotchi : " + e.getMessage());
         }
-        Tamagotchi tamagotchi = new Tamagotchi();
-        TimeStamp.timeStamp(tamagotchi);
 
         return new Tamagotchi();
     }
