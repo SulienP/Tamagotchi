@@ -15,37 +15,36 @@ public class GameManager {
             System.out.println("Bienvenue dans Tamagotchi");
             tamagotchi.state = 1;
             tamagotchi.SaveTamagotchi(tamagotchi);
-            
+            System.out.println(tamagotchi.name); 
         }
         if (tamagotchi.state != 0) {
-            System.out.println("je passe au gamemana" +tamagotchi.state); 
             String value = Menu.MenuPlay();
             if ("wash".equals(value)) {
                 tamagotchi.toilet();
                 System.out.println("Vous avez lavé votre Tamagotchi");
-                tamagotchi.checkTimerforTamagotchi("wash");
+               //  tamagotchi.checkTimerforTamagotchi("wash");
                
             } else if ("heal".equals(value)) {
                 tamagotchi.cure();
                 System.out.println("Vous avez soigné votre Tamagotchi");
-                tamagotchi.checkTimerforTamagotchi("heal");
+               //  tamagotchi.checkTimerforTamagotchi("heal");
                
                 
             } else if ("feed".equals(value)) {
                 tamagotchi.feed();
                 System.out.println("Vous avez soigné votre Tamagotchi");
-                tamagotchi.checkTimerforTamagotchi("feed");
+               //  tamagotchi.checkTimerforTamagotchi("feed");
                 
                
                 
             } else if ("play".equals(value)) {
                 tamagotchi.play();
                 
-                                tamagotchi.checkTimerforTamagotchi("play");
-
-                System.out.println("Vous avez joué avec votre Tamagotchi");
+                               //  tamagotchi.checkTimerforTamagotchi("play");
+                               tamagotchi.happyness +=3;
+                System.out.println("Vous avez joué avec votre Tamagotchi" + tamagotchi.happyness);
                
-                
+                gamemanager();
             } else if ("info".equals(value)) {
                 tamagotchi.information();
                 

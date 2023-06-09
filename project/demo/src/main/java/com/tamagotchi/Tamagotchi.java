@@ -13,28 +13,27 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 
 public class Tamagotchi implements Serializable {
-    int lesFood = 5;
-    String name = "";
-    int health = 50;
-    int happyness = 15;
-    int care = 30;
-    int state = 0;
-    boolean isAlive = true;
-    int tiredness = 20;
-    boolean isSisck = false;
-    long lastTime;
-    long lastTimePlay ;
-    long lastTimeFeed ;
-    long lastTimeHelath;
-    long daytime = 30;
-    long currentTime ;
+    int lesFood;
+    String name;
+    int health;
+    int happyness; 
+    int food;
+    int care;
+    int state;
+    boolean isAlive;
+    boolean isSisck;
 
-    public void checkTimerforTamagotchi(String action) {
-        LocalDateTime now = LocalDateTime.now();
-        long seconds = now.toEpochSecond(java.time.ZoneOffset.UTC);
-        System.out.println();
-        
+    public Tamagotchi() {
+        name = "";
+        health = 0;
+        happyness = 0;
+        food = 15;
+        care = 30;
+        isAlive = true;
+        isSisck = false;
     }
+
+
 
     public void askeName() {
         System.out.println("Qu'elle sera son nom?");
@@ -55,14 +54,11 @@ public class Tamagotchi implements Serializable {
                 askeName();
             }
         }
-        tamagotchi(input);
+        name = input;
         Clear.clearConsole();
     }
 
-    void tamagotchi(String name) {
-        System.out.println(name);
-        this.name = name;
-    }
+   
 
     public void toilet() {
         // lanch little game who return value between 1 to 100
@@ -70,13 +66,24 @@ public class Tamagotchi implements Serializable {
     }
 
     public void play() {
-        this.happyness += 3;
+        if (isAlive) {
+            
+            this.happyness = this.happyness + 3;
+            System.out.println(name + " est heureux ! Joie : " + happyness);
+        } else {
+            System.out.println(name + " est mort. Vous ne pouvez pas jouer avec lui.");
+        }
+    }
 
-    }
     public void feed() {
-        // lanch little game who return value between 1 to 100
-        this.happyness += 5; // complit with value return by game
+        if (isAlive) {
+            food -= 3;
+            System.out.println(name + " est nourri ! Faim : " + food);
+        } else {
+            System.out.println(name + " est mort. Vous ne pouvez pas le nourrir.");
+        }
     }
+
 
     public void cure() { // add exception if tamagotchi isn't old
         this.isSisck = false;
@@ -85,7 +92,7 @@ public class Tamagotchi implements Serializable {
     void SaveTamagotchi(Tamagotchi tamagotchi) {
         LocalDateTime now = LocalDateTime.now();
         long seconds = now.toEpochSecond(java.time.ZoneOffset.UTC);
-        this.lastTime = seconds;
+        // this.lastTime = seconds;
         System.out.println("lastime defin");
         Path path = Path.of("./tamagotchi.dat");
         if (!Files.exists(path)) {
@@ -145,6 +152,7 @@ public class Tamagotchi implements Serializable {
             System.err.println("Quelque chose s'est mal passé durant le chargement du tamagotchi : " + e.getMessage());
         }
 
-        return new Tamagotchi();
+        return  new Tamagotchi();
+
     }
 }

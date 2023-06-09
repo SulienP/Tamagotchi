@@ -1,5 +1,4 @@
 package com.tamagotchi;
-
 import java.io.InputStreamReader;
 import java.util.Objects;
 import java.io.BufferedReader;
