@@ -11,27 +11,18 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class Tamagotchi implements Serializable {
     int lesFood;
-    String name;
-    int health;
-    int happyness; 
-    int food;
-    int care;
-    int state;
-    boolean isAlive;
-    boolean isSisck;
-
-    public Tamagotchi() {
-        name = "";
-        health = 0;
-        happyness = 0;
-        food = 15;
-        care = 30;
-        isAlive = true;
-        isSisck = false;
-    }
+    String name ="";
+    int health=2;
+    int happyness =2; 
+    int food = 1;
+    int care= 2;
+    int state = 0;
+    boolean isAlive = true;
+    boolean isSisck= false;
 
 
 
@@ -54,7 +45,7 @@ public class Tamagotchi implements Serializable {
                 askeName();
             }
         }
-        name = input;
+        this.name = input;
         Clear.clearConsole();
     }
 
@@ -66,23 +57,18 @@ public class Tamagotchi implements Serializable {
     }
 
     public void play() {
-        if (isAlive) {
+    
             
-            this.happyness = this.happyness + 3;
-            System.out.println(name + " est heureux ! Joie : " + happyness);
-        } else {
-            System.out.println(name + " est mort. Vous ne pouvez pas jouer avec lui.");
-        }
+        this.happyness = this.happyness + 3;
+       
     }
 
-    public void feed() {
-        if (isAlive) {
-            food -= 3;
-            System.out.println(name + " est nourri ! Faim : " + food);
-        } else {
-            System.out.println(name + " est mort. Vous ne pouvez pas le nourrir.");
-        }
-    }
+public void feed() {
+        this.happyness = this.happyness+ 1; // Augmenter le bonheur après avoir nourri
+   
+    
+}
+
 
 
     public void cure() { // add exception if tamagotchi isn't old
@@ -90,10 +76,7 @@ public class Tamagotchi implements Serializable {
     }
     
     void SaveTamagotchi(Tamagotchi tamagotchi) {
-        LocalDateTime now = LocalDateTime.now();
-        long seconds = now.toEpochSecond(java.time.ZoneOffset.UTC);
-        // this.lastTime = seconds;
-        System.out.println("lastime defin");
+   
         Path path = Path.of("./tamagotchi.dat");
         if (!Files.exists(path)) {
             this.state = 1;
@@ -128,11 +111,22 @@ public class Tamagotchi implements Serializable {
             stateValue = "dead";
         }
         System.out.println("State:" + stateValue);
-     
- 
-     
+        System.out.println("Appuyer sur une touche ?");
+        
+        InputStreamReader reader = new InputStreamReader(System.in);
+        BufferedReader buffer = new BufferedReader(reader);
+        
+        try {
+            String userInput = buffer.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
     }
-    
+
+    public void bye() {
+        System.out.println("bye");
+        System.exit(0);
+    }
     public static Tamagotchi loadTamagotchi() {
         try {
             Path filePath = Path.of("./tamagotchi.dat");
