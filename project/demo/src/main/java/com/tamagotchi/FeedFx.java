@@ -1,6 +1,5 @@
 package com.tamagotchi;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,9 +10,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class FeedFx extends Application {
+public class FeedFx  {
     Tamagotchi tamagotchi;
-    public void start(Stage primaryStage) {
+    public void start() {
         tamagotchi = tamagotchi.loadTamagotchi();
         Stage newStage = new Stage();
         VBox newVBox = new VBox();

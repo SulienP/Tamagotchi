@@ -46,7 +46,7 @@ button1.setOnMouseClicked(e -> {
  });
  button3.setOnMouseClicked(e -> {
    FeedFx feedFx = new FeedFx();
-    feedFx.start(primaryStage);
+    feedFx.start();
 });
     
         HBox buttonBox = new HBox(button1, button2, button3);
