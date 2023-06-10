@@ -26,8 +26,8 @@ public class Tamagotchi implements Serializable {
 
     public void essaye() {
         System.out.println(("care"));
-        this.test += 1;
-        System.out.println(this.test);
+        this.state = 1;
+        System.out.println(this.state);
 
     }
     public void askeName() {
