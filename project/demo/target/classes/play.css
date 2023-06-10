@@ -1,0 +1,9 @@
+.button {
+    -fx-background-color: rgb(4, 59, 154);
+        -fx-alignment: center;
+}
+
+.canvas {
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}

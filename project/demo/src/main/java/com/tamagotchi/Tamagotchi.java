@@ -10,25 +10,72 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Random;
 
 
 public class Tamagotchi implements Serializable {
-    int lesFood;
     String name ="";
-    int health=2;
-    int happyness =2; 
+    int happyness =15; 
     int food = 1;
     int care= 2;
     int state = 0;
     boolean isAlive = true;
     boolean isSisck= false;
-    int test = 0;
+    long cycle = 0;
+    int feedCycle = 0;
+    int playCycle = 0;
+    int caringCycle = 0;
+    int cleaningCycle = 0;
+    int deadCycle = 0;
+    int sickCycle = 0;
 
-    public void essaye() {
-        System.out.println(("care"));
-        this.state = 1;
-        System.out.println(this.state);
+    public boolean deadCondifiton() {
+        if (this.state == 3) {
+            Menu.MenuPlayDead();
+            return true;
+        }
+        if (this.happyness <= 0 && this.deadCycle >= 5) {
+            Menu.MenuPlayDead();
+            return true;
+        }
+        return false;
+    }
 
+    public void checkCondition() {
+        if (!deadCondifiton()) {
+            int lessHapyness = 0;
+            if (this.feedCycle >= 0) {
+                for (int i = 0; i < this.feedCycle; i++) {
+                    lessHapyness = lessHapyness + (i * this.feedCycle);
+                }
+                this.happyness = this.happyness - lessHapyness;
+            }
+        }
+        if (!this.isSisck) {
+            if (this.state == 3) {
+                Random random = new Random();
+                int randomNumber = random.nextInt(3) + 1;
+                if (randomNumber > 1) {
+                    this.isSisck = true;
+                }
+            }
+        } else {
+            if (this.sickCycle >= 1) {
+                Menu.MenuPlayDead();
+            }
+        }
+    }
+    
+    public boolean checkUpdateToState2() {
+        if (this.state == 1) {
+            if(this.feedCycle == 4 && this.happyness >= 40) {
+                this.state = 2;
+                SaveTamagotchi(this);
+                return  true;
+            }
+        } 
+            return false;
+        
     }
     public void askeName() {
         System.out.println("Qu'elle sera son nom?");
@@ -57,7 +104,7 @@ public class Tamagotchi implements Serializable {
 
     public void toilet() {
         // lanch little game who return value between 1 to 100
-        this.care += 30; // complit with value return by game
+        this.care += 3; // complit with value return by game
     }
 
     public void play() {
@@ -68,10 +115,7 @@ public class Tamagotchi implements Serializable {
     }
 
     public void feed() {
-        System.out.println(this.happyness);
-        this.happyness = this.happyness+ 1; // Augmenter le bonheur après avoir nourri
-   System.out.println("je passe bien ici");
-   System.out.println(this.happyness);
+        this.happyness = this.happyness+ 1; 
 }
 
 
@@ -103,7 +147,6 @@ public class Tamagotchi implements Serializable {
     public void information() {
         String stateValue = "";
         System.out.println("name:" + this.name);
-        System.out.println("health:" + this.health);
         System.out.println("happyness:" + this.happyness);
         System.out.println("care:" + this.care);
         if (this.state == 0) {

@@ -5,20 +5,12 @@ import java.nio.file.Path;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class JavaFx extends Application {
@@ -45,57 +37,16 @@ public class JavaFx extends Application {
         Button button2 = new Button("feed");
         Button button3 = new Button("clean");
 button1.setOnMouseClicked(e -> {
-            Stage newStage = new Stage();
-        VBox newVBox = new VBox();
-        Label label = new Label("test");
-        HBox hBox = new HBox(label);
-        Button backButton = new Button("test");
-
-        newVBox.getChildren().addAll(hBox, backButton);
-
-        Scene newScene = new Scene(newVBox, 600, 600);
-
-        newStage.setScene(newScene);
-        newStage.show();
-          backButton.setOnMouseClicked(c -> {
-            tamagotchi.essaye();
-          });
-
-        // backButton.setOnMouseClicked(event -> newStage.close());
+    PlayFx playFx = new PlayFx();
+           playFx.start(primaryStage);
     });
  button2.setOnMouseClicked(e -> {
-               Stage newStage = new Stage();
-        VBox newVBox = new VBox();
-        Button backButton = new Button("Retour");
-
-        Scene newScene = new Scene(newVBox, 600, 600);
-
-        newStage.setScene(newScene);
-        newStage.show();
-        tamagotchi.feed();
-        tamagotchi.SaveTamagotchi(tamagotchi);
-  
-        backButton.setOnMouseClicked(event -> newStage.close());
-        });
+           CleanFx cleanFx = new CleanFx();
+           cleanFx.start(primaryStage);
+ });
  button3.setOnMouseClicked(e -> {
-    Stage newStage = new Stage();
-    VBox newVBox = new VBox();
-    Button backButton = new Button("Retour");
-
-    Scene newScene = new Scene(newVBox, 600, 600);
-
-    // Définir le fond de couleur beige
-    BackgroundFill backgroundFill = new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY);
-    Background background = new Background(backgroundFill);
-    newVBox.setBackground(background);
-
-    newStage.setScene(newScene);
-    newStage.show();
-
-    //tamagotchi.clean();
-    tamagotchi.SaveTamagotchi(tamagotchi);
-
-    backButton.setOnMouseClicked(event -> newStage.close());
+   FeedFx feedFx = new FeedFx();
+    feedFx.start(primaryStage);
 });
     
         HBox buttonBox = new HBox(button1, button2, button3);

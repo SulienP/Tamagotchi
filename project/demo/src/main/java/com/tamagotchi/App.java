@@ -10,8 +10,6 @@ import javafx.application.Application;
 public class App  {
 
     
-
-
     public static void main(String[] args) {
         String starting = Choice.start();
         System.out.println(starting);

@@ -31,12 +31,19 @@ public class GameManager {
                     System.out.println("Vous avez lavé votre Tamagotchi");
                     //  tamagotchi.checkTimerforTamagotchi("wash");
 
-                } else if ("heal".equals(value)) {
-                    tamagotchi.cure();
-                    System.out.println("Vous avez soigné votre Tamagotchi");
-                    //  tamagotchi.checkTimerforTamagotchi("heal");
+                } 
+                if (!tamagotchi.isAlive) {
+                    if ("heal".equals(value)) {
+                        System.out.println("Votre tamagotchi est en pleine forme");
 
-                } else if ("feed".equals(value)) {
+                    }
+                } else {
+                    if ("heal".equals(value)) {
+                        System.out.println("Votre tamagotchi est en pleine forme");
+                        tamagotchi.cure();
+                    }
+                }
+                 if ("feed".equals(value)) {
                     tamagotchi.feed();
                     System.out.println("Vous avez nourri votre Tamagotchi");
                     //  tamagotchi.checkTimerforTamagotchi("feed");

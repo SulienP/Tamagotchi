@@ -8,10 +8,9 @@ public class Menu {
     private static final String[] TAMAGOTCHI_MENU = {
             "1. Nourrir",
             "2. Jouer",
-            "3. Se laver",
-            "4. Se soigner",
-            "5. Afficher les informations",
-            "6. Quitter"
+            "3. Se soigner",
+            "4. Afficher les informations",
+            "5. Quitter"
     };
     private static final String[] TAMAGOTCHI_MENU_DEAD = {
             "1. Afficher les informations",
@@ -20,7 +19,7 @@ public class Menu {
     };
 
     public static String MenuPlay() {
-        String [] goodValyue = { "1", "2", "3", "4", "5", "6" };
+        String [] goodValyue = { "1", "2", "3", "4", "5" };
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(reader);
         System.out.println("Que voulez-vous faire ?");
