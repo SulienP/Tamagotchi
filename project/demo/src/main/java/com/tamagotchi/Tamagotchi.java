@@ -10,8 +10,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.LocalDateTime;
-import java.util.Scanner;
+
 
 public class Tamagotchi implements Serializable {
     int lesFood;
@@ -23,9 +22,14 @@ public class Tamagotchi implements Serializable {
     int state = 0;
     boolean isAlive = true;
     boolean isSisck= false;
+    int test = 0;
 
+    public void essaye() {
+        System.out.println(("care"));
+        this.test += 1;
+        System.out.println(this.test);
 
-
+    }
     public void askeName() {
         System.out.println("Qu'elle sera son nom?");
         InputStreamReader reader = new InputStreamReader(System.in);
@@ -63,10 +67,11 @@ public class Tamagotchi implements Serializable {
        
     }
 
-public void feed() {
+    public void feed() {
+        System.out.println(this.happyness);
         this.happyness = this.happyness+ 1; // Augmenter le bonheur après avoir nourri
-   
-    
+   System.out.println("je passe bien ici");
+   System.out.println(this.happyness);
 }
 
 
