@@ -1,36 +1,49 @@
 package com.tamagotchi;
 
-import javafx.geometry.Insets;
+import java.util.Random;
+
+
+import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class FeedFx  {
+import javafx.scene.shape.Circle;public class FeedFx extends Application {
     Tamagotchi tamagotchi;
-    public void start() {
+    int value = 0;
+
+    public void start(Stage stage) {
         tamagotchi = tamagotchi.loadTamagotchi();
-        Stage newStage = new Stage();
-        VBox newVBox = new VBox();
-        Button backButton = new Button("Retour");
 
-        Scene newScene = new Scene(newVBox, 600, 600);
+        Circle circle = new Circle(150.0f, 150.0f, 30.0f);
+        Group groupScene = new Group(circle);
+        circle.setFill(Color.BLUEVIOLET);
 
-        // Définir le fond de couleur beige
-        BackgroundFill backgroundFill = new BackgroundFill(Color.BEIGE, CornerRadii.EMPTY, Insets.EMPTY);
-        Background background = new Background(backgroundFill);
-        newVBox.setBackground(background);
+        circle.setOnMouseClicked(e -> {
+            if (value == 0) {
+                circle.setRadius(circle.getRadius() * 2);
+                value += 1;
+                circle.setFill(Color.BISQUE);
+            } else if (value == 1) {
+                circle.setRadius(25.0f);
+                value += 1;
+            } else if (value == 2) {
+                circle.setRadius(700.0f);
+                circle.setFill(Color.BLACK);
+                tamagotchi.feed();
+                tamagotchi.SaveTamagotchi(tamagotchi);
+                value += 1;
+                if (value == 3) {
+                    stage.close();
+                }
+            }
+        });
+   
+        Scene scene = new Scene(groupScene, 600, 600);
+        stage.setScene(scene);
+        stage.show();
 
-        newStage.setScene(newScene);
-        newStage.show();
-
-        //tamagotchi.clean();
         tamagotchi.SaveTamagotchi(tamagotchi);
-
-        backButton.setOnMouseClicked(event -> newStage.close());
     }
 }

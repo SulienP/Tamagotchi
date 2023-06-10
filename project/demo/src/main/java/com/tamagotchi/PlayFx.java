@@ -13,14 +13,14 @@ import javafx.stage.Stage;
 
 public class PlayFx extends Application {
     Tamagotchi tamagotchi;
-    BorderPane root;
+    BorderPane page;
 
     @Override
     public void start(Stage primaryStage) {
         tamagotchi = tamagotchi.loadTamagotchi();
         String cssPath = getClass().getResource("/play.css").toString();
 
-        root = new BorderPane();
+        page = new BorderPane();
         Label label = new Label("Dessine moi un dessin ");
 
         Canvas canvas = new Canvas(500, 500);
@@ -52,12 +52,12 @@ public class PlayFx extends Application {
             gc.setStroke(getSelectedColor());
         });
 
-        root.setTop(label);
-        root.setCenter(canvas);
-        root.setRight(colorPicker);
-        root.setBottom(exit);
+        page.setTop(label);
+        page.setCenter(canvas);
+        page.setRight(colorPicker);
+        page.setBottom(exit);
 
-        Scene scene = new Scene(root, 600, 600);
+        Scene scene = new Scene(page, 600, 600);
         scene.getStylesheets().add(cssPath);
 
         primaryStage.setScene(scene);
@@ -69,7 +69,7 @@ public class PlayFx extends Application {
     }
 
     private Color getSelectedColor() {
-        ColorPicker colorPicker = (ColorPicker) root.getRight();
+        ColorPicker colorPicker = (ColorPicker) page.getRight();
         return colorPicker.getValue();
     }
 
