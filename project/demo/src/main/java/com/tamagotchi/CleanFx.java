@@ -10,6 +10,7 @@ import javafx.scene.shape.Circle;
 public class CleanFx extends Application {
     Tamagotchi tamagotchi;
     int value = 0;
+
     public void start(Stage stage) {
         tamagotchi = tamagotchi.loadTamagotchi();
 

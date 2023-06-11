@@ -1,22 +1,13 @@
 package com.tamagotchi;
 
-import java.security.Permission;
-
 import javafx.application.Application;
-import javafx.stage.Stage;
 
 
 
 /**
  * JavaFX App
  */
-public class App extends Application {
-
-    @Override
-    public void start(Stage stage) {
-        Spawnjfx start = new Spawnjfx();
-        start.start(stage);
-    }
+public class App  {
 
     
     public static void main(String[] args) {

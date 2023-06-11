@@ -18,7 +18,7 @@ public class Tamagotchi implements Serializable {
     int happyness =15; 
     int food = 1;
     int care= 2;
-    int state = 0;
+    int state = 1;
     boolean isAlive = true;
     boolean isSisck= false;
     long cycle = 0;
@@ -30,7 +30,7 @@ public class Tamagotchi implements Serializable {
     int sickCycle = 0;
     
     public boolean deadCondifiton() {
-        if (this.state == 3) {
+        if (this.state == 4) {
             Menu.MenuPlayDead();
             return true;
         }
@@ -112,7 +112,6 @@ public class Tamagotchi implements Serializable {
     }
     
     public void play() {
-        System.out.println(this.name);
         
         this.happyness = this.happyness + 3;
         
@@ -160,6 +159,8 @@ public void information() {
     } else if (this.state == 2) {
         stateValue = "old";
     } else if (this.state == 3) {
+        stateValue = "old";
+    }else if (this.state == 4) {
         stateValue = "dead";
     }
     System.out.println("State:" + stateValue);

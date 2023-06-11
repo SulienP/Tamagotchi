@@ -1,5 +1,7 @@
 package com.tamagotchi;
 
+import javafx.stage.Stage;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -9,7 +11,6 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 public class PlayFx extends Application {
     Tamagotchi tamagotchi;
@@ -42,7 +43,7 @@ public class PlayFx extends Application {
         exit.setOnMouseClicked(event -> {
             tamagotchi.play();
             tamagotchi.SaveTamagotchi(tamagotchi);
-                        JavaFx javaFx = new JavaFx();
+            JavaFx javaFx = new JavaFx();
             javaFx.start(primaryStage);
         });
 
@@ -57,15 +58,14 @@ public class PlayFx extends Application {
         page.setBottom(exit);
 
         Scene scene = new Scene(page, 600, 600);
-                String cssPath = getClass().getResource("/play.css").toString();
+        String cssPath = getClass().getResource("/play.css").toString();
 
         scene.getStylesheets().add(cssPath);
         page.getStyleClass().add("mainPage");
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setOnCloseRequest(close -> {
-        page.getStyleClass().add("mainPage");
-
+            page.getStyleClass().add("mainPage");
             tamagotchi.SaveTamagotchi(tamagotchi);
         });
     }
@@ -74,6 +74,4 @@ public class PlayFx extends Application {
         ColorPicker colorPicker = (ColorPicker) page.getRight();
         return colorPicker.getValue();
     }
-
-  
 }

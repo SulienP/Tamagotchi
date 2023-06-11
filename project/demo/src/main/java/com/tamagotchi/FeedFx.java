@@ -1,14 +1,14 @@
 package com.tamagotchi;
 
-
-
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.scene.shape.Circle;
 
-import javafx.scene.shape.Circle;public class FeedFx extends Application {
+
+public class FeedFx extends Application {
     Tamagotchi tamagotchi;
     int value = 0;
 

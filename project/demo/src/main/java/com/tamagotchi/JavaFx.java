@@ -2,6 +2,7 @@ package com.tamagotchi;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import javafx.stage.Stage;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -13,7 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class JavaFx extends Application {
     public Tamagotchi tamagotchi;
@@ -23,12 +23,30 @@ public class JavaFx extends Application {
     public void start(Stage primaryStage) {
         Label label = new Label("");
         Path path = Path.of("./tamagotchi.dat");
+        
         if (Files.exists(path)) {
             String cssPath = getClass().getResource("/app.css").toString();
 
             tamagotchi = tamagotchi.loadTamagotchi();
-            imageView = new ImageView(new Image(getClass().getResource("/test.jpg").toExternalForm()));
+            imageView = new ImageView(new Image(getClass().getResource("/youngHapipng.png").toExternalForm()));
+            if (tamagotchi.happyness <= 10 && tamagotchi.state == 1) {
+              Image newImage = new Image(getClass().getResource("/youngNotHapi.png").toExternalForm());
 
+              imageView.setImage(newImage);
+            }
+            if (tamagotchi.state == 2) {
+              Image newImage = new Image(getClass().getResource("/old.png.png").toExternalForm());
+              imageView.setImage(newImage);
+            }
+            if (tamagotchi.happyness <= 10 && tamagotchi.state == 3) {
+              Image newImage = new Image(getClass().getResource("/oldNotHap.png").toExternalForm());
+
+              imageView.setImage(newImage);
+            }
+           if(tamagotchi.happyness >=10 && tamagotchi.state ==3){
+           Image newImage = new Image(getClass().getResource("/oldHapi.png").toExternalForm());
+            imageView.setImage(newImage);
+          }
             Button button1 = new Button("play");
             Button button2 = new Button("Clean");
             Button button3 = new Button("Feed");
@@ -57,7 +75,7 @@ public class JavaFx extends Application {
             buttonBox.getStyleClass().add("button-container");
 
             imageView.setFitWidth(500);
-            imageView.setFitHeight(500);
+            imageView.setFitHeight(400);
 
             VBox labelBox = new VBox(label);
 
@@ -79,6 +97,7 @@ public class JavaFx extends Application {
               DeadJfx deadJfx = new DeadJfx();
               deadJfx.start(new Stage());
             }
+          
         } else {
             NoTamaFx fx = new NoTamaFx();
             fx.start(new Stage());

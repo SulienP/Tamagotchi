@@ -8,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Box;
 import javafx.stage.Stage;
+
 public class DeadJfx extends Application{
     public void start(Stage stage) {
         Button replay = new Button("replay");
