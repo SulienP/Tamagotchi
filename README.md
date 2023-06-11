@@ -17,7 +17,7 @@ To be able to play it will be necessary to have installed java and to be able to
 
 ## **How to play** ##
 + To be able to play it will be necessary to copy the rep: https://github.com/SulienP/Tamagotchi
-+ Open in project\demo
++ Open in project/
 + Go to App.java and start the game or use the button.
 
 # Do not work
