@@ -2,17 +2,26 @@ package com.tamagotchi;
 
 import java.nio.file.*;
 
-
+/*
+ * Game manager vérrifie l'entré de l'utilisateur et lance les différents fonction et créer le tamagotchi si il n'existe pas 
+ */
 public class GameManager {
     static boolean wantExit = false;
     public static Tamagotchi tamagotchi;
 
     public static void gamemanager() {
+        /*
+         * sortie du jeu
+         */
         if (wantExit) {
             tamagotchi.SaveTamagotchi(tamagotchi);
             tamagotchi.bye();
         } else {
+            /*
+             * Check si tama existe ou pas
+             */
             Path path = Path.of("./tamagotchi.dat");
+            
             if (Files.exists(path)) {
                 tamagotchi = tamagotchi.loadTamagotchi();
             } else {
@@ -25,6 +34,9 @@ public class GameManager {
 
             }
             if (tamagotchi.state != 0) {
+                /*
+                 * Si ce n'est aps un oeuf on joue 
+                 */
                 String value = Menu.MenuPlay();
                 if ("wash".equals(value)) {
                     tamagotchi.toilet();
@@ -64,6 +76,9 @@ public class GameManager {
                 }
                 tamagotchi.SaveTamagotchi(tamagotchi);
                 tamagotchi = tamagotchi.loadTamagotchi();
+                /*
+                 * Clear de la console
+                 */
                 Clear.clearConsole();
                 gamemanager();
                

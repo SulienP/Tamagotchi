@@ -5,7 +5,7 @@ import javafx.application.Application;
 
 
 /**
- * JavaFX App
+ * JavaFX App 
  */
 public class App  {
 

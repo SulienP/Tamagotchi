@@ -10,7 +10,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.shape.Circle;
 
-
+/*
+ * Jeu de nourrissage du tama consiste en un rond qu'on clique de ssus  3fois
+ */
 public class FeedFx extends Application {
     Tamagotchi tamagotchi;
     int value = 0;
@@ -18,11 +20,15 @@ public class FeedFx extends Application {
     public void start(Stage stage) {
 
         tamagotchi = tamagotchi.loadTamagotchi();
-
+        /*
+         * Création du cercle
+         */
         Circle circle = new Circle(150.0f, 150.0f, 30.0f);
         Group groupScene = new Group(circle);
         circle.setFill(Color.BLUEVIOLET);
-
+        /*
+         * A chaque clique on chane la taille du rond
+         */
         circle.setOnMouseClicked(e -> {
             if (value == 0) {
                 circle.setRadius(circle.getRadius() * 2);
@@ -44,6 +50,9 @@ public class FeedFx extends Application {
                 }
             }
         });
+        /*
+         * Différent background pour chaque état du tama
+         */
         ImageView backgroundImage = new ImageView(new Image(getClass().getResource("/youngHapipng.png").toExternalForm()));
             if (tamagotchi.happyness <= 10 && tamagotchi.state == 1) {
               Image newImage = new Image(getClass().getResource("/youngNotHapi.png").toExternalForm());
@@ -59,10 +68,13 @@ public class FeedFx extends Application {
 
               backgroundImage.setImage(newImage);
             }
-           if(tamagotchi.happyness >=10 && tamagotchi.state ==3){
-           Image newImage = new Image(getClass().getResource("/oldHapi.png").toExternalForm());
-            backgroundImage.setImage(newImage);
-          }
+            if (tamagotchi.happyness >= 10 && tamagotchi.state == 3) {
+                Image newImage = new Image(getClass().getResource("/oldHapi.png").toExternalForm());
+                backgroundImage.setImage(newImage);
+            }
+            /*
+             * Ajout de la scène et de condition de fermeture
+             */
 Group allElemenGroup = new Group(backgroundImage, groupScene); 
 
 Scene scene = new Scene(allElemenGroup, 600, 600);

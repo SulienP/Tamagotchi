@@ -7,6 +7,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.shape.Circle;
 
+/*
+ * Jeux du clean du tamagotchi plusieurs on clique dessus et si tous cliqué c'est néttoyé 
+ */
 public class CleanFx extends Application {
     Tamagotchi tamagotchi;
     int value = 0;
@@ -15,6 +18,9 @@ public class CleanFx extends Application {
         tamagotchi = tamagotchi.loadTamagotchi();
 
         Stage myStage = new Stage();
+        /*
+         * Création des cercles 
+         */
         Circle circle1 = new Circle(150.0f, 150.0f, 30.0f);
         circle1.setFill(Color.BLUEVIOLET);
 
@@ -32,7 +38,9 @@ public class CleanFx extends Application {
 
         Circle circle6 = new Circle(26.0f, 26.0f, 150.0f);
         circle6.setFill(Color.TRANSPARENT);
-
+        /*
+         * conditions de win
+         */
         circle1.setOnMouseClicked(e -> {
             circle1.setVisible(false);
             value++;
@@ -104,7 +112,9 @@ public class CleanFx extends Application {
                 java.start(new Stage());
             }
         });
-
+        /*
+         * Ajout des élement et des conditons de femture
+         */
         Group allEmlement = new Group(circle1, circle2, circle3, circle4, circle5, circle6);
 
         Scene scene = new Scene(allEmlement, 600, 600);

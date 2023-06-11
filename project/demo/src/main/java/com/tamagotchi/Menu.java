@@ -3,6 +3,9 @@ import java.io.InputStreamReader;
 import java.util.Objects;
 import java.io.BufferedReader;
 
+/*
+ * Menu du jeu renvoie les différents éléments pour les famemanager
+ */
 public class Menu {
 
     private static final String[] TAMAGOTCHI_MENU = {

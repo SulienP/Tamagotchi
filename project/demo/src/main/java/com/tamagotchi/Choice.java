@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/*
+ * Choix entre command ou interface avec exception si rien du tt
+ */
 public class Choice {
     public static String start() {
         System.out.println("Vous voulez jouer avec une interface 1 ou un ligne de commande 2");

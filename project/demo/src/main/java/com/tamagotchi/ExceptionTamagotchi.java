@@ -6,6 +6,9 @@ enum TamagotchiExecptionType {
     noValue
 }
 
+/*
+ * Gestion des différentes potentieles exceptions qu'on peut rencontre
+ */
 public class ExceptionTamagotchi extends Exception {
     TamagotchiExecptionType execptionType = TamagotchiExecptionType.NoName;
     String cause = "";

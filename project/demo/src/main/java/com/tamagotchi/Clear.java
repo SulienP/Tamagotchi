@@ -1,5 +1,8 @@
 package com.tamagotchi;
 
+/*
+ * Fonction de clear de la console
+ */
 public class Clear {
     public static void clearConsole() {
         try {
@@ -9,7 +12,6 @@ public class Clear {
                 Runtime.getRuntime().exec("clear");
             }
         } catch (Exception e) {
-            // Gérer les exceptions
             e.getMessage();
         }
     }
