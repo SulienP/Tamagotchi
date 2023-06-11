@@ -27,4 +27,4 @@ This means that the tamagotchi is immortal and does not change state.**All other
 To be able to check the different states of the tamagotchi, you can define in the tamagotchi values ​​what should be changed.
 If you want to age the tamagotchi, delete the save file and restart the games by changing the state value to 1 or 2 or 3 or 4To be able to check the different states of the tamagotchi, you can define in the tamagotchi values ​​what should be changed.
 If you want to age the tamagotchi, delete the save file and restart the games by changing the state value to 1 or 2 or 3 or 4.
-The stylization of the graphic part is also not finished
+The stylization of the graphic part is also not finished.

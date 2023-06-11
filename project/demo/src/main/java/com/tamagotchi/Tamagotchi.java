@@ -10,6 +10,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Random;
 
 
@@ -28,6 +30,9 @@ public class Tamagotchi implements Serializable {
     int cleaningCycle = 0;
     int deadCycle = 0;
     int sickCycle = 0;
+    long timeNoww = 0;
+    long lastTime = 0;
+    int timeValue = 30;
     
     public boolean deadCondifiton() {
         if (this.state == 4) {
@@ -54,9 +59,11 @@ public class Tamagotchi implements Serializable {
         }
     }
     
+ 
+
     public void checkCondition() {
+        checkAllCondition();
         if (!deadCondifiton()) {
-            checkFeed();
             if (!this.isSisck) {
                 if (this.state == 3) {
                     Random random = new Random();
@@ -72,7 +79,27 @@ public class Tamagotchi implements Serializable {
             }
         }
     }
-    
+
+    private void checkAllCondition() {
+        long lessValue = 0;
+                LocalDateTime now = LocalDateTime.now();
+        long seconds = now.truncatedTo(ChronoUnit.SECONDS).toEpochSecond(null);
+
+        this.timeNoww = seconds;
+        lessValue = (this.timeNoww - this.lastTime);
+        /*
+          TODO: vérifier les cycles entre deux connection
+         */
+           if (lessValue >1) {
+               this.feedCycle += 1;
+               this.playCycle = 1;
+           }
+           checkFeed();
+           if (this.playCycle >= 3) {
+               this.happyness -= 2;
+           }
+
+    }
     public boolean checkUpdateToState2() {
         if (this.state == 1) {
             if(this.feedCycle == 4 && this.happyness >= 40) {
@@ -110,25 +137,27 @@ public class Tamagotchi implements Serializable {
     
     
     public void toilet() {
-    
+        
         this.care += 3;
         this.happyness += 2;
     }
     
     public void play() {
-        
+        this.playCycle = 0;
         this.happyness = this.happyness +  3;
         
     }
     
     public void feed() {
+                this.feedCycle = 0;
         this.food += 3;
         this.happyness = this.happyness+ 1; 
     }
     
     
     
-    public void cure() { // add exception if tamagotchi isn't old
+    public void cure() {
+        this.caringCycle = 0;
         this.isSisck = false;
 }
 
