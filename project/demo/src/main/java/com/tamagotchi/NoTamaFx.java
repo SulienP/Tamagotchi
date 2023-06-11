@@ -46,6 +46,9 @@ public void start(Stage window){
     nextStep.setOnMouseClicked(e -> {
         tamagotchi.name = textField.getText();
         window.close();
+        tamagotchi.state = 1;
+
+        tamagotchi.SaveTamagotchi(tamagotchi);
         JavaFx start = new JavaFx();
         start.start(new Stage());
     });

@@ -23,7 +23,7 @@ public class Tamagotchi implements Serializable {
     int happyness =15; 
     int food = 1;
     int care= 2;
-    int state = 1;
+    int state = 0;
     boolean isAlive = true;
     boolean isSisck= false;
     long cycle = 0;
@@ -197,12 +197,14 @@ public void information() {
     System.out.println("name:" + this.name);
     System.out.println("happyness:" + this.happyness);
     System.out.println("care:" + this.care);
+    System.out.println("food:" + this.food);
+
     if (this.state == 0) {
         stateValue = "baby";
     } else if (this.state == 1) {
-        stateValue = "adult";
+        stateValue = "young";
     } else if (this.state == 2) {
-        stateValue = "old";
+        stateValue = "adult";
     } else if (this.state == 3) {
         stateValue = "old";
     }else if (this.state == 4) {

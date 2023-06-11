@@ -28,6 +28,7 @@ public class JavaFx extends Application {
   @Override
   public void start(Stage primaryStage) {
     tamagotchi = tamagotchi.loadTamagotchi();
+
     Label label = new Label("hapiness :" + tamagotchi.happyness);
     Path path = Path.of("./tamagotchi.dat");
     /*
@@ -47,7 +48,7 @@ public class JavaFx extends Application {
         imageView.setImage(newImage);
       }
       if (tamagotchi.state == 2) {
-        Image newImage = new Image(getClass().getResource("/old.png.png").toExternalForm());
+        Image newImage = new Image(getClass().getResource("/old.png").toExternalForm());
         imageView.setImage(newImage);
       }
       if (tamagotchi.happyness <= 10 && tamagotchi.state == 3) {

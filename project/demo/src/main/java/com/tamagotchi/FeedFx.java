@@ -60,7 +60,7 @@ public class FeedFx extends Application {
               backgroundImage.setImage(newImage);
             }
             if (tamagotchi.state == 2) {
-              Image newImage = new Image(getClass().getResource("/old.png.png").toExternalForm());
+              Image newImage = new Image(getClass().getResource("/old.png").toExternalForm());
               backgroundImage.setImage(newImage);
             }
             if (tamagotchi.happyness <= 10 && tamagotchi.state == 3) {
