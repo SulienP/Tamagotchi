@@ -107,24 +107,25 @@ public class Tamagotchi implements Serializable {
     
     
     public void toilet() {
-        // lanch little game who return value between 1 to 100
-        this.care += 3; // complit with value return by game
+        this.care += 3;
+        this.happyness += 2;
     }
     
     public void play() {
         
-        this.happyness = this.happyness + 3;
+        this.happyness = this.happyness +  3;
         
     }
     
     public void feed() {
+        this.food += 3;
         this.happyness = this.happyness+ 1; 
     }
     
     
     
     public void cure() { // add exception if tamagotchi isn't old
-    this.isSisck = false;
+        this.isSisck = false;
 }
 
 void SaveTamagotchi(Tamagotchi tamagotchi) {
@@ -164,7 +165,7 @@ public void information() {
         stateValue = "dead";
     }
     System.out.println("State:" + stateValue);
-    System.out.println("Appuyer sur une touche ?");
+    System.out.println("Appuyer sur une touche");
     
     InputStreamReader reader = new InputStreamReader(System.in);
     BufferedReader buffer = new BufferedReader(reader);

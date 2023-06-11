@@ -1,12 +1,9 @@
 .button {
     -fx-background-color: rgb(4, 59, 154);
-        -ms-flex-item-align: center;
+        -fx-flex-item-align: center;
 }
 
-.canvas {
-    -fx-border-color: black;
-    -fx-border-width: 2px;
-}
-.stage{
-    -fx-background-color:blue;
+.label{
+    -fx-flex-align: center;
+        -fx-font-size: 24px;
 }

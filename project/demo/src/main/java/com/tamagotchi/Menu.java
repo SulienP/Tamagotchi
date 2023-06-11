@@ -45,15 +45,13 @@ public class Menu {
                 case "2":
                     return "play";
                 case "3":
-                    return "wash";
-                case "4":
                     return "heal";
-                case "5":
+                case "4":
                     return "info";
-                case "6":
+                case "5":
                     return "exit";
                 default:
-                    return "error";
+                    return "";
             }
         } catch (Exception e) {
             return "error";

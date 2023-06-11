@@ -21,7 +21,8 @@ public class JavaFx extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Label label = new Label("");
+      tamagotchi = tamagotchi.loadTamagotchi();
+        Label label = new Label("hapiness :" + tamagotchi.happyness);
         Path path = Path.of("./tamagotchi.dat");
         
         if (Files.exists(path)) {
@@ -55,20 +56,30 @@ public class JavaFx extends Application {
             if (tamagotchi.isSisck) {
               button4.setVisible(true);
             }
+            button4.setOnMouseClicked(v -> {
+              tamagotchi.cure();
+              tamagotchi.SaveTamagotchi(tamagotchi);
+            });
             button1.setOnMouseClicked(e -> {
                 PlayFx playFx = new PlayFx();
-              playFx.start(primaryStage);
-                label.setText("You have play with your tamagothci");
+              playFx.start(new Stage());
+                              primaryStage.close();
+
             });
             button2.setOnMouseClicked(e -> {
               CleanFx cleanFx = new CleanFx();
-              label.setText("You have play with your tamagothci");
-                cleanFx.start(primaryStage);
+                            cleanFx.start(new Stage());
+
+
+                            primaryStage.close();
+
             });
             button3.setOnMouseClicked(e -> {
               FeedFx feedFx = new FeedFx();
-              label.setText("You have feed whti  with your tamagothci");
-                feedFx.start(new Stage());
+                              feedFx.start(new Stage());
+
+
+              primaryStage.close();
             });
 
             HBox buttonBox = new HBox(button1, button2, button3, button4);
@@ -97,7 +108,6 @@ public class JavaFx extends Application {
               DeadJfx deadJfx = new DeadJfx();
               deadJfx.start(new Stage());
             }
-          
         } else {
             NoTamaFx fx = new NoTamaFx();
             fx.start(new Stage());

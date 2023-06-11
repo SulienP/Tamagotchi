@@ -2,7 +2,8 @@ package com.tamagotchi;
 
 enum TamagotchiExecptionType {
     NoName,
-    BadValue
+    BadValue,
+    noValue
 }
 
 public class ExceptionTamagotchi extends Exception {
@@ -21,6 +22,8 @@ public class ExceptionTamagotchi extends Exception {
                 return "Merci de mrentrer un nom";
             case BadValue:
                 return "Merci d'entrer une valeur correcte";
+            case noValue:
+                return "Merci de faire le choix entre ligne de command et interface graphique";
             default:
                 return "Erreur inconnue";
         }

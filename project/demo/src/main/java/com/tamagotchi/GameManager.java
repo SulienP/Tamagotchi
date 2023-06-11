@@ -64,7 +64,6 @@ public class GameManager {
                 }
                 tamagotchi.SaveTamagotchi(tamagotchi);
                 tamagotchi = tamagotchi.loadTamagotchi();
-                // tamagotchi.information();
                 Clear.clearConsole();
                 gamemanager();
                

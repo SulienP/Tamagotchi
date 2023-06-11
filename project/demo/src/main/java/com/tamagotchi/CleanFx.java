@@ -40,6 +40,8 @@ public class CleanFx extends Application {
                 tamagotchi.toilet();
                 tamagotchi.SaveTamagotchi(tamagotchi);
                 myStage.close();
+                JavaFx java = new JavaFx();
+                java.start(new Stage());
             }
         });
 
@@ -50,6 +52,8 @@ public class CleanFx extends Application {
                 tamagotchi.toilet();
                 tamagotchi.SaveTamagotchi(tamagotchi);
                 myStage.close();
+                JavaFx java = new JavaFx();
+                java.start(new Stage());
             }
         });
 
@@ -60,6 +64,8 @@ public class CleanFx extends Application {
                 tamagotchi.toilet();
                 tamagotchi.SaveTamagotchi(tamagotchi);
                 myStage.close();
+                JavaFx java = new JavaFx();
+                java.start(new Stage());
             }
         });
 
@@ -70,6 +76,8 @@ public class CleanFx extends Application {
                 tamagotchi.toilet();
                 tamagotchi.SaveTamagotchi(tamagotchi);
                 myStage.close();
+                JavaFx java = new JavaFx();
+                java.start(new Stage());
             }
         });
 
@@ -80,6 +88,8 @@ public class CleanFx extends Application {
                 tamagotchi.toilet();
                 tamagotchi.SaveTamagotchi(tamagotchi);
                 myStage.close();
+                JavaFx java = new JavaFx();
+                java.start(new Stage());
             }
         });
 
@@ -90,18 +100,22 @@ public class CleanFx extends Application {
                 tamagotchi.toilet();
                 tamagotchi.SaveTamagotchi(tamagotchi);
                 myStage.close();
+                JavaFx java = new JavaFx();
+                java.start(new Stage());
             }
         });
 
-        Group root = new Group(circle1, circle2, circle3, circle4, circle5, circle6);
-        Scene scene = new Scene(root, 600, 600);
+        Group allEmlement = new Group(circle1, circle2, circle3, circle4, circle5, circle6);
+
+        Scene scene = new Scene(allEmlement, 600, 600);
         myStage.setScene(scene);
         myStage.show();
-
         tamagotchi.SaveTamagotchi(tamagotchi);
+
+        myStage.setOnCloseRequest(event -> {
+
+            tamagotchi.SaveTamagotchi(tamagotchi);
+        });
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }

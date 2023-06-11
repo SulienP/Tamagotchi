@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class Choice {
     public static String start() {
-        System.out.println("Vous voulez jouer avec une interface 1 ou un ligne de commande");
+        System.out.println("Vous voulez jouer avec une interface 1 ou un ligne de commande 2");
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader buffer = new BufferedReader(reader);
         String input = buffer.toString();
@@ -18,7 +18,7 @@ public class Choice {
         }
         if (input.isEmpty()) {
             try {
-                throw new ExceptionTamagotchi(TamagotchiExecptionType.NoName, "noName");
+                throw new ExceptionTamagotchi(TamagotchiExecptionType.noValue, "noValue");
             } catch (ExceptionTamagotchi e) {
                 System.out.println(e.getMessage());
                 start();
