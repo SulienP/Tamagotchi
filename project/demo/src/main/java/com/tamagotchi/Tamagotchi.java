@@ -31,10 +31,13 @@ public class Tamagotchi implements Serializable {
     
     public boolean deadCondifiton() {
         if (this.state == 4) {
+            this.isAlive = false;
             Menu.MenuPlayDead();
             return true;
         }
         if (this.happyness <= 0 && this.deadCycle >= 5) {
+                        this.isAlive = false;
+
             Menu.MenuPlayDead();
             return true;
         }
@@ -107,6 +110,7 @@ public class Tamagotchi implements Serializable {
     
     
     public void toilet() {
+    
         this.care += 3;
         this.happyness += 2;
     }
