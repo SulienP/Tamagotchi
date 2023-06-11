@@ -17,13 +17,13 @@ public class DeadJfx extends Application{
             newTama.start(new Stage());
         });
         VBox vbox = new VBox(replay);
-        vbox.getStyleClass().add("button-container");
+vbox.getStyleClass().addAll("button-container", "centered-vbox");
 
         BorderPane scene = new BorderPane();
         scene.setCenter(vbox);
 
         Scene mainScene = new Scene(scene, 600, 600);
-        mainScene.getStylesheets().add(getClass().getResource("/app.css").toString());
+        mainScene.getStylesheets().add(getClass().getResource("/dead.css").toString());
 
         stage.setScene(mainScene);
         stage.show();

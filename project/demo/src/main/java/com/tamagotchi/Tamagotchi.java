@@ -112,7 +112,7 @@ public class Tamagotchi implements Serializable {
     }
     
     public void play() {
-        
+        System.out.println(this.name);
         
         this.happyness = this.happyness + 3;
         

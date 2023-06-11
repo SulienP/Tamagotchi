@@ -18,7 +18,6 @@ public class PlayFx extends Application {
     @Override
     public void start(Stage primaryStage) {
         tamagotchi = tamagotchi.loadTamagotchi();
-        String cssPath = getClass().getResource("/play.css").toString();
 
         page = new BorderPane();
         Label label = new Label("Dessine moi un dessin ");
@@ -58,11 +57,14 @@ public class PlayFx extends Application {
         page.setBottom(exit);
 
         Scene scene = new Scene(page, 600, 600);
-        scene.getStylesheets().add(cssPath);
+                String cssPath = getClass().getResource("/play.css").toString();
 
+        scene.getStylesheets().add(cssPath);
+        page.getStyleClass().add("mainPage");
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setOnCloseRequest(close -> {
+        page.getStyleClass().add("mainPage");
 
             tamagotchi.SaveTamagotchi(tamagotchi);
         });

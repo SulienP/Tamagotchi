@@ -1,6 +1,5 @@
 package com.tamagotchi;
 
-import java.util.Random;
 
 
 import javafx.application.Application;

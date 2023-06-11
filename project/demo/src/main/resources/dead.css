@@ -1,0 +1,7 @@
+.button-container {
+    -fx-alignment: center;
+}
+
+.button-container .replay-button {
+    -fx-background-color: rgb(2, 90, 144);
+}

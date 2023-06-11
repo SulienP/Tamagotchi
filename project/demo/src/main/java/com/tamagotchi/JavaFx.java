@@ -34,33 +34,32 @@ public class JavaFx extends Application {
             Button button3 = new Button("Feed");
             Button button4 = new Button("Sick");
             button4.setVisible(false);
-            if (!tamagotchi.isSisck) {
+            if (tamagotchi.isSisck) {
               button4.setVisible(true);
             }
             button1.setOnMouseClicked(e -> {
                 PlayFx playFx = new PlayFx();
               playFx.start(primaryStage);
-                label.setText("You have play whti :" + tamagotchi.name.toString());
+                label.setText("You have play with your tamagothci");
             });
             button2.setOnMouseClicked(e -> {
               CleanFx cleanFx = new CleanFx();
-              label.setText("You have play wiith :" + tamagotchi.name.toString());
+              label.setText("You have play with your tamagothci");
                 cleanFx.start(primaryStage);
             });
             button3.setOnMouseClicked(e -> {
               FeedFx feedFx = new FeedFx();
-              label.setText("You have feed whti :" + tamagotchi.name.toString());
+              label.setText("You have feed whti  with your tamagothci");
                 feedFx.start(new Stage());
             });
 
             HBox buttonBox = new HBox(button1, button2, button3, button4);
             buttonBox.getStyleClass().add("button-container");
 
-            imageView.setFitWidth(550);
-            imageView.setFitHeight(550);
+            imageView.setFitWidth(500);
+            imageView.setFitHeight(500);
 
             VBox labelBox = new VBox(label);
-            labelBox.setPadding(new Insets(10));
 
             BorderPane scene = new BorderPane();
             scene.setTop(labelBox);

@@ -14,10 +14,15 @@ public class NoTamaFx extends Application {
     public void start(Stage window) {
                   tamagotchi = new Tamagotchi();
 
-        TextField textField = new TextField();
+                  TextField textField = new TextField();
+textField.getStyleClass().add("text-field");
+
         Label welcome = new Label("Welcome on tamagotchi");
         VBox newUser = new VBox();
         Button nextStep = new Button("Next Step");
+        nextStep.getStyleClass().add("next-step");
+        welcome.getStyleClass().add("welcome");
+
         nextStep.setOnMouseClicked(e -> {
             tamagotchi.name = textField.getText();
             window.close();
@@ -30,6 +35,6 @@ public class NoTamaFx extends Application {
         window.setScene(scene);
         window.show();
                   tamagotchi.SaveTamagotchi(tamagotchi);
-                  tamagotchi.SaveTamagotchi(tamagotchi);
-            
+                            scene.getStylesheets().add(getClass().getResource("/noTama.css").toString());
+
     }}
