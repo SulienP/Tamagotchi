@@ -157,7 +157,7 @@ public class Tamagotchi implements Serializable {
     
     
     public void cure() {
-        this.caringCycle = 0;
+        this.caringCycle =0;
         this.isSisck = false;
 }
 
